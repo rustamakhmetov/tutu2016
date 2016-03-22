@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :trains
   resources :railway_stations
-  resources :routes
+  resources :routes do
+    get 'stations' => 'routes#add_stations', :on => :member
+    patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
+    delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
+  end
+
   get 'welcome' => 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
