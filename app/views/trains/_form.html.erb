@@ -1,11 +1,17 @@
 <%= form_for(@train) do |f| %>
   <%= render 'common/errors', resource: @train %>
 
-  <div class="field">
-    <%= f.label :number, 'Номер' %><br>
-    <%= f.text_field :number %>
-  </div>
-  <div class="actions">
-    <%= f.submit "#{@train.new_record? ? 'Создать' : 'Изменить'}" %>
-  </div>
+    <div class="field">
+        <%= f.label :number, 'Номер' %><br>
+        <%= f.text_field :number %>
+    </div>
+
+    <div class="field">
+        <%= f.label :route, "Текущий маршрут" %>
+        <%= f.collection_select :route_id, Route.all, :id, :name %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "#{@train.new_record? ? 'Создать' : 'Изменить'}" %>
+    </div>
 <% end %>

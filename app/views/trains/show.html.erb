@@ -5,5 +5,15 @@
   <%= @train.number %>
 </p>
 
+<p>
+  <strong>Текущий маршрут: </strong>
+
+  <% if @train.route %>
+    <%= @train.route.name %>
+  <% else %>
+    Маршрут не назначен
+  <% end %>
+</p>
+
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
