@@ -6,6 +6,22 @@
 </p>
 
 <p>
+  <strong>Поезда на маршруте</strong>
+</p>
+
+<p>
+  <% if @route.trains.empty? %>
+      Список пуст
+  <% else %>
+    <ul>
+      <% @route.trains.each do |train| %>
+          <li><%= train.number %></li>
+      <% end %>
+    </ul>
+<% end %>
+</p>
+
+<p>
   <strong>Станции в маршруте</strong>
 </p>
 
