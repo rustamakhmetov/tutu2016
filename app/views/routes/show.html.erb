@@ -6,17 +6,19 @@
 </p>
 
 <p>
-  <strong>Stations:</strong>
-    <table>
-      <tbody>
+  <strong>Станции в маршруте</strong>
+</p>
+
+<p>
+  <% if @route.stations.empty? %>
+      Список пуст
+  <% else %>
+    <ul>
       <% @route.stations.each do |railway_station| %>
-          <tr>
-            <td><%= railway_station.title %></td>
-            <td><%= link_to '[X]', delete_station_route_path(@route, railway_station), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+          <li><%= railway_station.title %> <%= link_to '[X]', delete_station_route_path(@route, railway_station), method: :delete, data: { confirm: 'Are you sure?' } %></li>
       <% end %>
-      </tbody>
-    </table>
+    </ul>
+<% end %>
 </p>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |

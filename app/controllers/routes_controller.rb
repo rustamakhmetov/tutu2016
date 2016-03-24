@@ -44,7 +44,7 @@ class RoutesController < ApplicationController
   end
 
   def update_stations
-    stations = params[:stations][:id].reject(&:blank?)
+    stations = route_params[:stations].reject(&:blank?)
     if !stations.empty?
       @route.stations << RailwayStation.where(id: stations)
       redirect_to route_url, notice: 'Railway stations was successfully added.'
@@ -66,7 +66,7 @@ class RoutesController < ApplicationController
   end
 
   def route_params
-    params.require(:route).permit(:name)
+    params.require(:route).permit(:name, stations: [])
   end
 
 end
