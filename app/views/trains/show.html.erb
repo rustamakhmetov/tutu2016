@@ -1,9 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер:</strong>
   <%= @train.number %>
 </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<p>
+  <strong>Текущий маршрут: </strong>
+
+  <% if @train.route %>
+    <%= @train.route.name %>
+  <% else %>
+    Маршрут не назначен
+  <% end %>
+</p>
+
+<p>
+    Купейных вагонов: <%= @compartments.count %>
+    <p>
+        Верхних мест: <%= @compartments.sum(:top_places) %>
+    </p>
+    <p>
+        Нижних мест: <%= @compartments.sum(:bottom_places) %>
+    </p>
+</p>
+
+<p>
+    Плацкартных вагонов: <%= @reserved_seat.count %>
+    <p>
+      Верхних мест: <%= @reserved_seat.sum(:top_places) %>
+    </p>
+    <p>
+      Нижних мест: <%= @reserved_seat.sum(:bottom_places) %>
+    </p>
+</p>
+
+<%= link_to 'Изменить', edit_train_path(@train) %> |
+<%= link_to 'Назад', trains_path %>

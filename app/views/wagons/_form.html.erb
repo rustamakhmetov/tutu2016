@@ -1,0 +1,27 @@
+<%= form_for(@wagon) do |f| %>
+  <%= render 'common/errors', resource: @wagon %>
+
+  <div class="field">
+    <%= f.label :route, "Текущий поезд" %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :wagon_type, 'Тип вагона' %>
+    <%= f.select :wagon_type, options_for_select(Wagon::WAGON_TYPES.invert, @wagon.wagon_type), {} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_places, 'Верхних мест' %><br>
+    <%= f.number_field :top_places %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bottom_places, 'Нижних мест' %><br>
+    <%= f.number_field :bottom_places %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{@wagon.new_record? ? 'Создать' : 'Изменить'}" %>
+  </div>
+<% end %>

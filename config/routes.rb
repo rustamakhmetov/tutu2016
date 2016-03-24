@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
     delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
   end
+  resources :wagons
 
   get 'welcome' => 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

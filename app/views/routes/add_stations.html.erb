@@ -1,18 +1,17 @@
 <p id="notice"><%= notice %></p>
 <p id="error"><%= error %></p>
 
-<h1>Select Railway Station for route <%= @route.name %></h1>
+<h1>Добавление станций в маршрут <%= @route.name %></h1>
 
 <%= form_for @route, :url => url_for(:action => 'update_stations') do |f| %>
     <div class="field">
       <%=
-          #collection_select(:stations, :id, @railway_stations, :id, :title, {}, {:multiple => true})
-          f.collection_select :stations, @railway_stations, :id, :title, {}, {:multiple => true}
+       f.collection_select :stations, @railway_stations, :id, :title, {}, {:multiple => true}
       %>
     </div>
     <div class="actions">
-      <%= f.submit "Add stations" %>
+      <%= f.submit "Добавить станции" %>
     </div>
 <% end %>
 
-<%= link_to 'Back', route_path(@route) %>
+<%= link_to 'Назад', route_path(@route) %>
