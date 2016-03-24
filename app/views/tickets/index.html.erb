@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список билетов</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Поезд</th>
+      <th>Начальная станция</th>
+      <th>Конечная станция</th>
+      <th>ФИО</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @tickets %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Новый билет', new_ticket_path %>
