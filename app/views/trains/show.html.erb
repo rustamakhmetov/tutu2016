@@ -15,5 +15,25 @@
   <% end %>
 </p>
 
+<p>
+    Купейных вагонов: <%= @compartments.count %>
+    <p>
+        Верхних мест: <%= @compartments.sum(:top_places) %>
+    </p>
+    <p>
+        Нижних мест: <%= @compartments.sum(:bottom_places) %>
+    </p>
+</p>
+
+<p>
+    Плацкартных вагонов: <%= @reserved_seat.count %>
+    <p>
+      Верхних мест: <%= @reserved_seat.sum(:top_places) %>
+    </p>
+    <p>
+      Нижних мест: <%= @reserved_seat.sum(:bottom_places) %>
+    </p>
+</p>
+
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>

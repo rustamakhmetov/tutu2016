@@ -8,6 +8,9 @@ class TrainsController < ApplicationController
 
   # GET /trains/1
   def show
+    @compartments = @train.wagons.where(wagon_type: 'Compartment' )
+    @reserved_seat = @train.wagons.where(wagon_type: 'ReservedSeat' )
+
   end
 
   # GET /trains/new
