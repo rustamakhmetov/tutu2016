@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Наименование:</strong>
   <%= @route.name %>
 </p>
 
@@ -15,12 +15,12 @@
   <% else %>
     <ul>
       <% @route.stations.each do |railway_station| %>
-          <li><%= railway_station.title %> <%= link_to '[X]', delete_station_route_path(@route, railway_station), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <li><%= railway_station.title %> <%= link_to '[X]', delete_station_route_path(@route, railway_station), method: :delete, data: { confirm: 'Вы уверены?' } %></li>
       <% end %>
     </ul>
 <% end %>
 </p>
 
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Add stations', stations_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
+<%= link_to 'Изменить', edit_route_path(@route) %> |
+<%= link_to 'Добавить станции', stations_route_path(@route) %> |
+<%= link_to 'Назад', routes_path %>
