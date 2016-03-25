@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
   end
   resources :wagons
+  resources :tickets
 
   get 'welcome' => 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
