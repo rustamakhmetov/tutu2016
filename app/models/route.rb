@@ -5,7 +5,13 @@ class Route < ActiveRecord::Base
 
   validates :name, presence: true
 
-  before_create :set_name
+  before_validation :set_name
+
+  def delete_station(station)
+    self.stations.delete(station)
+    send :set_name
+    self.save
+  end
 
   private
 

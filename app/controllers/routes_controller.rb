@@ -55,7 +55,7 @@ class RoutesController < ApplicationController
 
   def delete_station
     station = RailwayStation.find(params[:station_id])
-    @route.stations.delete(station)
+    @route.delete_station(station)
     redirect_to route_url, notice: 'Станция "%s" успешно удалена.' % station.title
   end
 
