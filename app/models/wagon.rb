@@ -8,6 +8,8 @@ class Wagon < ActiveRecord::Base
 
   after_validation :set_number
 
+  default_scope { order(:number) }
+
   WAGON_TYPES = { 'SleepingWagon'=>'СВ', 'CompartmentWagon' => 'Купейный', 'ReservedSeatWagon' => 'Плацкартный', 'SedentaryWagon' => 'Сидячий'}
 
   def wagon_type_ids

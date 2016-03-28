@@ -38,8 +38,8 @@
 
   <% if ['SedentaryWagon'].include? @wagon.type or @wagon.new_record?  %>
     <div class="field">
-      <%= f.label :side_bottom_places, 'Сидячих мест' %><br>
-      <%= f.number_field :side_bottom_places %>
+      <%= f.label :sedentary_places, 'Сидячих мест' %><br>
+      <%= f.number_field :sedentary_places %>
     </div>
   <% end %>
 
