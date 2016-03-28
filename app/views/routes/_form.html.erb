@@ -2,9 +2,17 @@
   <%= render 'common/errors', resource: @route %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, 'Наименование' %><br>
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    <%= f.label :station_ids, 'Выберите станции:' %><br>
+    <%=
+      f.collection_select :station_ids, RailwayStation.all, :id, :title, {}, {:multiple => true}
+    %>
+  </div>
+
   <div class="actions">
     <%= f.submit "#{@route.new_record? ? 'Создать' : 'Изменить'}" %>
   </div>
