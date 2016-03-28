@@ -4,6 +4,7 @@ class Route < ActiveRecord::Base
   has_many :trains
 
   validates :name, presence: true
+  validate :stations_count
 
   before_validation :set_name
 
@@ -16,6 +17,16 @@ class Route < ActiveRecord::Base
   private
 
   def set_name
-    self.name = "#{self.stations.first.title} - #{self.stations.last.title}"
+    if self.stations.empty?
+      self.name = "Без станций"
+    else
+      self.name = "#{self.stations.first.title} - #{self.stations.last.title}"
+    end
+  end
+
+  def stations_count
+    if stations.size < 2
+      errors.add(:base, 'Маршрут должен содержать минимум 2 станции')
+    end
   end
 end
