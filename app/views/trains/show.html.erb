@@ -44,7 +44,7 @@
       Список пуст
   <% else %>
     <ul>
-      <% @train.wagons.each do |wagon| %>
+      <% @train.wagons.sorting(@train).each do |wagon| %>
           <li><%= link_to (wagon.number==nil ? 'Не задан' : wagon.number), wagon_path(wagon) %></li>
       <% end %>
     </ul>

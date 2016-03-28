@@ -6,9 +6,10 @@ class Wagon < ActiveRecord::Base
   validates :number, presence: true, numericality: { only_integer: true },
             uniqueness: { scope: :train, message: "Неуникальный номер вагона" }
 
-  after_validation :set_number
+  before_validation :set_number
 
-  default_scope { order(:number) }
+  #default_scope { order(:number => (train.sorting_wagons ? :desc : :asc )) }
+  scope :sorting, -> (train) { order(:number => (train.sorting_wagons ? :desc : :asc )) }
 
   WAGON_TYPES = { 'SleepingWagon'=>'СВ', 'CompartmentWagon' => 'Купейный', 'ReservedSeatWagon' => 'Плацкартный', 'SedentaryWagon' => 'Сидячий'}
 
