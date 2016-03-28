@@ -6,4 +6,10 @@ class Train < ActiveRecord::Base
   has_many :carriages
 
   validates :number, presence: true
+
+  # use: train.places_count("SleepingWagon", :bottom_places)
+  def places_count(wagon_type, place_type)
+    self.wagons.where(type: wagon_type).sum(place_type)
+  end
+
 end
