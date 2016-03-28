@@ -4,6 +4,8 @@ class Wagon < ActiveRecord::Base
   validates :type, inclusion: {in: :wagon_type_ids}
   validates :train, presence: true
 
+  after_validation :set_number
+
   WAGON_TYPES = { 'SleepingWagon'=>'СВ', 'CompartmentWagon' => 'Купейный', 'ReservedSeatWagon' => 'Плацкартный', 'SedentaryWagon' => 'Сидячий'}
 
   def wagon_type_ids
@@ -16,6 +18,13 @@ class Wagon < ActiveRecord::Base
 
   def to_partial_path
     'wagon'
+  end
+
+  def set_number
+    if train and self.number==nil
+      number = train.wagons.maximum(:number) || 0
+      self.number = number + 1
+    end
   end
 
 end
