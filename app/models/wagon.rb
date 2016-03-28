@@ -3,6 +3,8 @@ class Wagon < ActiveRecord::Base
 
   validates :type, inclusion: {in: :wagon_type_ids}
   validates :train, presence: true
+  validates :number, presence: true, numericality: { only_integer: true },
+            uniqueness: { scope: :train, message: "Неуникальный номер вагона" }
 
   after_validation :set_number
 
