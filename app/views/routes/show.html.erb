@@ -29,12 +29,27 @@
   <% if @route.stations.empty? %>
       Список пуст
   <% else %>
-    <ul>
-      <% @route.stations.ordered.each do |railway_station| %>
-          <li><%= railway_station.position(@route) %>. <%= railway_station.title %> <%= link_to '[X]', delete_station_route_path(@route, railway_station), method: :delete, data: { confirm: 'Вы уверены?' } %></li>
-      <% end %>
-    </ul>
-<% end %>
+    <table>
+      <thead>
+        <th>Наименование</th>
+        <th>Позиция</th>
+      </thead>
+      <tbody>
+          <% @route.stations.ordered.each do |railway_station| %>
+            <tr>
+                <td width="100px"><%= railway_station.title %>
+                <td>
+                  <%= form_tag(update_position_railway_station_path(railway_station), method: :patch) do %>
+                    <%= hidden_field_tag :route_id, @route.id %>
+                    <%= number_field_tag :position, railway_station.position(@route) %>
+                    <%= submit_tag 'Изменить' %>
+                  <% end %>
+                </td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </p>
 
 <%= link_to 'Изменить', edit_route_path(@route) %> |

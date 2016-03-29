@@ -7,24 +7,23 @@ class RailwayStation < ActiveRecord::Base
 
   validates :title, presence: true
 
-  #scope :ordered, -> {joins(:railway_stations_routes).order('railway_stations_routes.position ASC')}
-  scope :ordered, -> {order('railway_stations_routes.position')}
+  scope :ordered, -> {joins(:railway_stations_routes).order('railway_stations_routes.position').uniq}
+  scope :ordered2, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
+  scope :ordered3, -> {order('railway_stations_routes.position')}
 
   def position(route)
-    obj = railway_stations_routes_object(route)
-    obj.position
+    station_route(route).try(:position)
   end
 
   def update_position(route, pos)
-    obj = railway_stations_routes_object(route)
-    obj.position = pos
-    obj.save
+    obj = station_route(route)
+    obj.update(position: pos) if obj
   end
 
   private
 
-  def railway_stations_routes_object(route)
-    self.railway_stations_routes.where(route_id: route).first
+  def station_route(route)
+    @station_route ||= railway_stations_routes.where(route_id: route).first
   end
 
 end
