@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :trains
+  resources :trains do
+    resources :wagons, shallow: true
+  end
   resources :railway_stations do
     patch :update_position, :on => :member
   end
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
     patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
     delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
   end
-  resources :wagons
+  #resources :wagons
   resources :tickets
 
   get 'welcome' => 'welcome#index'
