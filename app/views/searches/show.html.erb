@@ -6,9 +6,9 @@
 
 <p>
   <%= form_tag search_path, method: :get do %>
-    <%= select_tag :arrival_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @arrival_station.try(:id)) %>
-    <%= select_tag :departure_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @departure_station.try(:id)) %>
-    <%= submit_tag 'Искать' %>
+      <%= select_tag :departure_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @departure_station.try(:id)) %>
+      <%= select_tag :arrival_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @arrival_station.try(:id)) %>
+      <%= submit_tag 'Искать' %>
   <% end %>
 
   <% if @arrival_station && @departure_station %>
@@ -30,10 +30,10 @@
                       <%= route.name %>
                     </td>
                     <td>
-                        <%= @departure_station.departure_time(route) %>
+                        <%= @departure_station.departure_time(route).to_s(:time) %>
                     </td>
                     <td>
-                        <%= @arrival_station.arrival_time(route) %>
+                        <%= @arrival_station.arrival_time(route).to_s(:time) %>
                     </td>
                 </tr>
             <% end %>
