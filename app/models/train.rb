@@ -12,4 +12,12 @@ class Train < ActiveRecord::Base
     self.wagons.where(type: wagon_type).sum(place_type)
   end
 
+  def sorted_wagons
+    if self.sorting_wagons
+      Wagon.sorting_desc
+    else
+      Wagon.sorting_asc
+    end
+  end
+
 end

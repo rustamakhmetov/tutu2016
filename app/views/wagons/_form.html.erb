@@ -11,21 +11,21 @@
     <%= f.select :type, options_for_select(Wagon::WAGON_TYPES.invert, @wagon.type), {} %>
   </div>
 
-  <% if ['CompartmentWagon', 'ReservedSeatWagon'].include? @wagon.type or @wagon.new_record? %>
+  <% if ['CompartmentWagon', 'ReservedSeatWagon'].include?(@wagon.type) || @wagon.new_record? %>
       <div class="field">
         <%= f.label :top_places, 'Верхних мест' %><br>
         <%= f.number_field :top_places %>
       </div>
   <% end %>
 
-  <% if ['CompartmentWagon', 'ReservedSeatWagon', 'SleepingWagon'].include? @wagon.type or @wagon.new_record?  %>
+  <% if ['CompartmentWagon', 'ReservedSeatWagon', 'SleepingWagon'].include(@wagon.type) || @wagon.new_record?  %>
       <div class="field">
         <%= f.label :bottom_places, 'Нижних мест' %><br>
         <%= f.number_field :bottom_places %>
       </div>
   <% end %>
 
-  <% if ['ReservedSeatWagon'].include? @wagon.type or @wagon.new_record?  %>
+  <% if ['ReservedSeatWagon'].include?(@wagon.type) || @wagon.new_record?  %>
       <div class="field">
         <%= f.label :side_bottom_places, 'Боковых нижних мест' %><br>
         <%= f.number_field :side_bottom_places %>
@@ -36,7 +36,7 @@
       </div>
   <% end %>
 
-  <% if ['SedentaryWagon'].include? @wagon.type or @wagon.new_record?  %>
+  <% if ['SedentaryWagon'].include?(@wagon.type) || @wagon.new_record?  %>
     <div class="field">
       <%= f.label :sedentary_places, 'Сидячих мест' %><br>
       <%= f.number_field :sedentary_places %>
