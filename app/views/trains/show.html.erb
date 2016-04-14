@@ -35,5 +35,22 @@
     </p>
 </p>
 
+<p>
+  <strong>Вагоны в поезде</strong>
+</p>
+
+<p>
+  <% if @train.wagons.empty? %>
+      Список пуст
+  <% else %>
+    <ul>
+      <% @train.sorted_wagons.each do |wagon| %>
+          <li><%= link_to (wagon.number || 'Не задан'), wagon_path(wagon) %></li>
+      <% end %>
+    </ul>
+<% end %>
+</p>
+
+
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>

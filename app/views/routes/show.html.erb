@@ -30,8 +30,8 @@
       Список пуст
   <% else %>
     <ul>
-      <% @route.stations.each do |railway_station| %>
-          <li><%= railway_station.title %> <%= link_to '[X]', delete_station_route_path(@route, railway_station), method: :delete, data: { confirm: 'Вы уверены?' } %></li>
+      <% @route.stations.ordered.each do |railway_station| %>
+          <li><%= railway_station.position(@route) %>. <%= railway_station.title %> <%= link_to '[X]', delete_station_route_path(@route, railway_station), method: :delete, data: { confirm: 'Вы уверены?' } %></li>
       <% end %>
     </ul>
 <% end %>

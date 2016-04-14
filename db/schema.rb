@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325090925) do
+ActiveRecord::Schema.define(version: 20160328111411) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "number"
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(version: 20160325090925) do
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "position"
   end
+
+  add_index "railway_stations_routes", ["position"], name: "index_railway_stations_routes_on_position"
 
   create_table "routes", force: :cascade do |t|
     t.string   "name"
@@ -54,10 +57,11 @@ ActiveRecord::Schema.define(version: 20160325090925) do
 
   create_table "trains", force: :cascade do |t|
     t.string   "number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "current_station_id"
     t.integer  "route_id"
+    t.boolean  "sorting_wagons",     default: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,9 +74,17 @@ ActiveRecord::Schema.define(version: 20160325090925) do
     t.string   "wagon_type"
     t.integer  "top_places"
     t.integer  "bottom_places"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "train_id"
+    t.string   "type"
+    t.integer  "sedentary_places"
+    t.integer  "side_bottom_places"
+    t.integer  "side_top_places"
+    t.integer  "number"
   end
+
+  add_index "wagons", ["number"], name: "index_wagons_on_number"
+  add_index "wagons", ["type"], name: "index_wagons_on_type"
 
 end
