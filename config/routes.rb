@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   #resources :wagons
   resources :tickets
+  resource :search
 
   get 'welcome' => 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
