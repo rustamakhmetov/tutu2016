@@ -41,7 +41,9 @@ class RailwayStation < ActiveRecord::Base
   private
 
   def station_route(route)
-    @station_route ||= railway_stations_routes.where(route_id: route).first
+    if @station_route.try(:route)!=route
+      @station_route = railway_stations_routes.where(route_id: route).first
+    end
   end
 
 end
