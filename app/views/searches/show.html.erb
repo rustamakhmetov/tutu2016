@@ -18,6 +18,7 @@
         <th width="200px">Маршрут</th>
         <th width="100px">Время отправления</th>
         <th width="100px">Время прибытия</th>
+        <th></th>
       </thead>
       <tbody>
         <% @routes.each do |route| %>
@@ -34,6 +35,9 @@
                     </td>
                     <td>
                         <%= @arrival_station.arrival_time(route).to_s(:time) %>
+                    </td>
+                    <td>
+                      <%= link_to "Купить", new_user_ticket_path(User.first, ticket: {start_station_id: @departure_station.id, end_station_id: @arrival_station.id, train_id: train.id}) %>
                     </td>
                 </tr>
             <% end %>

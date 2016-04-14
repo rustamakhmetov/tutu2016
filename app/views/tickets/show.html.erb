@@ -20,5 +20,9 @@
   <%= @ticket.fio %>
 </p>
 
-<%= link_to 'Изменить', edit_ticket_path(@ticket) %> |
-<%= link_to 'Назад', tickets_path %>
+<p>
+  <strong>Паспорт:</strong>
+  <%= @ticket.passport %>
+</p>
+
+<%= link_to 'Назад', user_tickets_path %>

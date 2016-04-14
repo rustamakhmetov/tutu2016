@@ -1,19 +1,19 @@
-<%= form_for(@ticket) do |f| %>
+<%= form_for([@user, @ticket]) do |f| %>
   <%= render 'common/errors', resource: @ticket %>
 
   <div class="field">
     <%= f.label :train, "Текущий поезд" %>
-    <%= f.collection_select :train_id, Train.all, :id, :number %>
+    <%= f.select :train_id, options_from_collection_for_select( Train.all, "id", "number", @train.try(:id) ) %>
   </div>
 
   <div class="field">
     <%= f.label :start_station, 'Начальная станция' %>
-    <%= f.collection_select :start_station_id, RailwayStation.all, :id, :title %>
+    <%= f.select :start_station_id, options_from_collection_for_select( RailwayStation.all, "id", "title", @start_station.try(:id) ) %>
   </div>
 
   <div class="field">
     <%= f.label :end_station, 'Конечная станция' %>
-    <%= f.collection_select :end_station_id, RailwayStation.all, :id, :title %>
+    <%= f.select :end_station_id, options_from_collection_for_select( RailwayStation.all, "id", "title", @end_station.try(:id) ) %>
   </div>
 
   <div class="field">
@@ -21,7 +21,12 @@
     <%= f.text_field :fio %>
   </div>
 
+  <div class="field">
+    <%= f.label :passport, 'Паспорт' %>
+    <%= f.text_field :passport %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "#{@ticket.new_record? ? 'Создать' : 'Изменить'}" %>
+    <%= f.submit "#{@ticket.new_record? ? 'Купить' : 'Изменить'}" %>
   </div>
 <% end %>
