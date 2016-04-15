@@ -44,6 +44,7 @@ class RailwayStation < ActiveRecord::Base
     if @station_route.try(:route)!=route
       @station_route = railway_stations_routes.where(route_id: route).first
     end
+    @station_route
   end
 
 end
