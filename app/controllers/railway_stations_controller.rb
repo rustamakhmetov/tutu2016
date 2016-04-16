@@ -68,16 +68,17 @@ class RailwayStationsController < ApplicationController
     redirect_to @route
   end
 
-  def update_position
-    @railway_station.update_position(@route, params[:position])
-  end
-
-  def update_times
-    @railway_station.update_times(@route, params[:arrival_time], params[:departure_time])
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def update_position
+      @railway_station.update_position(@route, params[:position])
+    end
+
+    def update_times
+      @railway_station.update_times(@route, params[:arrival_time], params[:departure_time])
+    end
+
+  # Use callbacks to share common setup or constraints between actions.
     def set_railway_station
       @railway_station = RailwayStation.find(params[:id])
     end
