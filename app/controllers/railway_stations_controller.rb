@@ -1,5 +1,6 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_position]
+  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_parameters]
+  before_action :set_route, only: :update_parameters
 
   # GET /railway_stations
   # GET /railway_stations.json
@@ -61,16 +62,18 @@ class RailwayStationsController < ApplicationController
     end
   end
 
-  def update_position
-    @route = Route.find(params[:route_id])
-    @railway_station.update_position(@route, params[:position])
-    update_time
+  def update_parameters
+    update_position
+    update_times
     redirect_to @route
   end
 
-  def update_time
-    @railway_station.update_arrival_time(@route, params[:arrival_time])
-    @railway_station.update_departure_time(@route, params[:departure_time])
+  def update_position
+    @railway_station.update_position(@route, params[:position])
+  end
+
+  def update_times
+    @railway_station.update_times(@route, params[:arrival_time], params[:departure_time])
   end
 
   private
@@ -82,5 +85,9 @@ class RailwayStationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def railway_station_params
       params.require(:railway_station).permit(:title)
+    end
+
+    def set_route
+      @route ||= Route.find(params[:route_id])
     end
 end

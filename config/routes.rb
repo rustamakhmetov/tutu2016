@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :wagons, shallow: true
   end
   resources :railway_stations do
-    patch :update_position, :on => :member
+    patch :update_parameters, :on => :member
   end
   resources :routes do
     get 'stations' => 'routes#add_stations', :on => :member

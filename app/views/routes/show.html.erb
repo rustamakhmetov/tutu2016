@@ -41,7 +41,7 @@
           <% @route.stations.ordered.each do |railway_station| %>
             <tr>
                 <td width="100px"><%= railway_station.title %>
-                <%= form_tag(update_position_railway_station_path(railway_station), method: :patch) do %>
+                <%= form_tag(update_parameters_railway_station_path(railway_station), method: :patch) do %>
                     <%= hidden_field_tag :route_id, @route.id %>
                     <td><%= number_field_tag :position, railway_station.position(@route) %></td>
                     <td><%= time_field_tag :arrival_time, railway_station.arrival_time(@route) %></td>
