@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :confirmable, :validatable
   has_many :tickets
 
-  validates :name, presence: true
+  #validates :name, presence: true
 end

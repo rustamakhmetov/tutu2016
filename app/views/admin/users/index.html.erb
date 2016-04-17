@@ -1,0 +1,19 @@
+<h1>Список пользователей</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Админ</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Новый пользователь', new_admin_user_path %>
+<%= link_to 'Назад', root_path %>
