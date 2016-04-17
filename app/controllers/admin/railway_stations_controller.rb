@@ -1,5 +1,4 @@
-class RailwayStationsController < ApplicationController
-  before_action :authenticate_user!
+class Admin::RailwayStationsController < Admin::BaseController
   before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_position]
 
   # GET /railway_stations
@@ -27,28 +26,20 @@ class RailwayStationsController < ApplicationController
   def create
     @railway_station = RailwayStation.new(railway_station_params)
 
-    respond_to do |format|
-      if @railway_station.save
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully created.' }
-        format.json { render :show, status: :created, location: @railway_station }
-      else
-        format.html { render :new }
-        format.json { render json: @railway_station.errors, status: :unprocessable_entity }
-      end
+    if @railway_station.save
+      redirect_to [:admin, @railway_station], notice: 'Railway station was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /railway_stations/1
   # PATCH/PUT /railway_stations/1.json
   def update
-    respond_to do |format|
-      if @railway_station.update(railway_station_params)
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully updated.' }
-        format.json { render :show, status: :ok, location: @railway_station }
-      else
-        format.html { render :edit }
-        format.json { render json: @railway_station.errors, status: :unprocessable_entity }
-      end
+    if @railway_station.update(railway_station_params)
+      redirect_to [:admin, @railway_station], notice: 'Railway station was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -56,10 +47,7 @@ class RailwayStationsController < ApplicationController
   # DELETE /railway_stations/1.json
   def destroy
     @railway_station.destroy
-    respond_to do |format|
-      format.html { redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_railway_stations_url, notice: 'Railway station was successfully destroyed.'
   end
 
   def update_position

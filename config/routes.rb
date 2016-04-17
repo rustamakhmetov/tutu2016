@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :trains do
-    resources :wagons, shallow: true
-  end
-  resources :railway_stations do
-    patch :update_position, :on => :member
-  end
-  resources :routes do
-    get 'stations' => 'routes#add_stations', :on => :member
-    patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
-    delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
-  end
+
   #resources :wagons
   #resources :tickets
   resource :search
   resources :users do
     resources :tickets, :except => [:edit, :update]
+  end
+
+  namespace :admin do
+    resources :trains do
+      resources :wagons, shallow: true
+    end
+    resources :railway_stations do
+      patch :update_position, :on => :member
+    end
+    resources :routes do
+      get 'stations' => 'routes#add_stations', :on => :member
+      patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
+      delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
+    end
+    resource :tickets
   end
 
   get 'welcome' => 'welcome#index'
