@@ -1,12 +1,11 @@
-class TicketsController < ApplicationController
+class Admin::TicketsController < Admin::BaseController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
-  before_action :set_train, :set_stations, only: [:new, :create]
-  before_action :authenticate_user!
+  #before_action :set_user
+  before_action :set_train, :set_stations, only: [:update]
 
   # GET /tickets
   def index
-    @tickets = Ticket.where(user: current_user).all
+    @tickets = Ticket.all
   end
 
   # GET /tickets/1
@@ -14,30 +13,30 @@ class TicketsController < ApplicationController
   end
 
   # GET /tickets/new
-  def new
-    @ticket = Ticket.new
-  end
+  # def new
+  #   @ticket = Ticket.new
+  # end
 
   # GET /tickets/1/edit
   def edit
   end
 
   # POST /tickets
-  def create
-    @ticket = Ticket.new(ticket_params)
-    @ticket.user = @user
-
-    if @ticket.save
-      redirect_to user_tickets_path(@user, @ticket), notice: 'Билет успешно создан.'
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @ticket = Ticket.new(ticket_params)
+  #   @ticket.user = @user
+  #
+  #   if @ticket.save
+  #     redirect_to admin_tickets_path(@user, @ticket), notice: 'Билет успешно создан.'
+  #   else
+  #     render :new
+  #   end
+  # end
 
   # PATCH/PUT /tickets/1
   def update
     if @ticket.update(ticket_params)
-      redirect_to @ticket, notice: 'Билет успешно обновлен.'
+      redirect_to [:admin, @ticket], notice: 'Билет успешно обновлен.'
     else
       render :edit
     end
@@ -46,7 +45,7 @@ class TicketsController < ApplicationController
   # DELETE /tickets/1
   def destroy
     @ticket.destroy
-    redirect_to user_tickets_path(@user), notice: 'Билет успешно удален.'
+    redirect_to admin_tickets_path(@ticket), notice: 'Билет успешно удален.'
   end
 
   private

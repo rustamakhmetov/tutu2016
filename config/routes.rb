@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
+    root 'admin#index'
+
     resources :trains do
       resources :wagons, shallow: true
     end
@@ -13,23 +15,25 @@ Rails.application.routes.draw do
       patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
       delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
     end
-    resource :tickets
-    resources :users do
-      resources :tickets, :except => [:edit, :update]
-    end
+    resources :users
+    resources :tickets, :except => [:new, :create]
   end
 
+  resources :users do
+    resources :tickets, :except => [:edit, :update]
+  end
   #resources :wagons
   #resources :tickets
-  resource :search
+  resource  :search
+  resources :cabinet, only: :index
 
 
-  get 'welcome' => 'welcome#index'
+  root 'searches#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
