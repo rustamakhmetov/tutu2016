@@ -1,0 +1,26 @@
+<p>
+  <strong>Текущий поезд:</strong>
+  <%= @ticket.train.number %>
+</p>
+
+<p>
+  <strong>Начальная станция:</strong>
+  <%= @ticket.start_station.title %>
+</p>
+
+<p>
+  <strong>Конечная станция:</strong>
+  <%= @ticket.end_station.title %>
+</p>
+
+<p>
+  <strong>ФИО:</strong>
+  <%= @ticket.fio %>
+</p>
+
+<p>
+  <strong>Паспорт:</strong>
+  <%= @ticket.passport %>
+</p>
+
+<%= link_to 'Назад', admin_tickets_path %>

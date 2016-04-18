@@ -1,0 +1,58 @@
+<p>
+  <strong>Номер:</strong>
+  <%= @train.number %>
+</p>
+
+<p>
+  <strong>Текущий маршрут: </strong>
+
+  <% if @train.route %>
+    <%= @train.route.name %>
+  <% else %>
+    Маршрут не назначен
+  <% end %>
+</p>
+
+<p>
+    Купейных вагонов: <%= @compartments.count %>
+    <p>
+        Верхних мест: <%= @compartments.sum(:top_places) %>
+    </p>
+    <p>
+        Нижних мест: <%= @compartments.sum(:bottom_places) %>
+    </p>
+</p>
+
+<p>
+    Плацкартных вагонов: <%= @reserved_seat.count %>
+    <p>
+      Верхних мест: <%= @reserved_seat.sum(:top_places) %>
+    </p>
+    <p>
+      Нижних мест: <%= @reserved_seat.sum(:bottom_places) %>
+    </p>
+</p>
+
+<p>
+  <strong>Вагоны в поезде</strong>
+</p>
+
+<p>
+  <% if @train.wagons.empty? %>
+      Список пуст
+  <% else %>
+    <ul>
+      <% @train.sorted_wagons.each do |wagon| %>
+          <li><%= link_to (wagon.number || 'Не задан'), admin_wagon_path(wagon) %></li>
+      <% end %>
+    </ul>
+<% end %>
+</p>
+
+<p>
+  <%= link_to 'Добавить вагон', new_admin_train_wagon_path(@train) %>
+</p>
+
+
+<%= link_to 'Изменить', edit_admin_train_path(@train) %> |
+<%= link_to 'Назад', admin_trains_path %>

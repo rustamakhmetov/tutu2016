@@ -2,10 +2,11 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   before_action :set_train, :set_stations, only: [:new, :create]
+  before_action :authenticate_user!
 
   # GET /tickets
   def index
-    @tickets = Ticket.all
+    @tickets = current_user.tickets.all
   end
 
   # GET /tickets/1

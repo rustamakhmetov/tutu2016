@@ -1,28 +1,39 @@
 Rails.application.routes.draw do
-  resources :trains do
-    resources :wagons, shallow: true
+  devise_for :users
+
+  namespace :admin do
+    root 'admin#index'
+
+    resources :trains do
+      resources :wagons, shallow: true
+    end
+    resources :railway_stations do
+      patch :update_parameters, :on => :member
+    end
+    resources :routes do
+      get 'stations' => 'routes#add_stations', :on => :member
+      patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
+      delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
+    end
+    resources :users
+    resources :tickets, :except => [:new, :create]
   end
-  resources :railway_stations do
-    patch :update_parameters, :on => :member
-  end
-  resources :routes do
-    get 'stations' => 'routes#add_stations', :on => :member
-    patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
-    delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
-  end
-  #resources :wagons
-  #resources :tickets
-  resource :search
+
   resources :users do
     resources :tickets, :except => [:edit, :update]
   end
+  #resources :wagons
+  #resources :tickets
+  resource  :search
+  resources :cabinet, only: :index
 
-  get 'welcome' => 'welcome#index'
+
+  root 'searches#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,21 @@
+<h1>Список билетов</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Поезд</th>
+      <th>Начальная станция</th>
+      <th>Конечная станция</th>
+      <th>ФИО</th>
+      <th>Паспорт</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @tickets %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Назад', admin_root_path %>

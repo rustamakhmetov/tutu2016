@@ -1,0 +1,5 @@
+<h1>Личный кабинет</h1>
+<ol>
+  <li><%= link_to 'Поиск билетов', search_path %></li>
+  <li><%= link_to 'Мои билеты', user_tickets_path(current_user) %></li>
+</ol>
