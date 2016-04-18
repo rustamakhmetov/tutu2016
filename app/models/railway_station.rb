@@ -7,24 +7,49 @@ class RailwayStation < ActiveRecord::Base
 
   validates :title, presence: true
 
-  #scope :ordered, -> {joins(:railway_stations_routes).order('railway_stations_routes.position ASC')}
-  scope :ordered, -> {order('railway_stations_routes.position')}
+  scope :ordered, -> {joins(:railway_stations_routes).order('railway_stations_routes.position').uniq}
+  scope :ordered2, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
+  scope :ordered3, -> {order('railway_stations_routes.position')}
 
   def position(route)
-    obj = railway_stations_routes_object(route)
-    obj.position
+    station_route(route).try(:position)
   end
 
   def update_position(route, pos)
-    obj = railway_stations_routes_object(route)
-    obj.position = pos
-    obj.save
+    obj = station_route(route)
+    obj.update(position: pos) if obj
+  end
+
+  def departure_time(route)
+    station_route(route).try(:departure_time)
+  end
+
+  def update_departure_time(route, value)
+    obj = station_route(route)
+    obj.update(departure_time: value) if obj
+  end
+
+  def arrival_time(route)
+    station_route(route).try(:arrival_time)
+  end
+
+  def update_arrival_time(route, value)
+    obj = station_route(route)
+    obj.update(arrival_time: value) if obj
+  end
+
+  def update_times(route, arrival_time, departure_time)
+    update_arrival_time(route, arrival_time)
+    update_departure_time(route, departure_time)
   end
 
   private
 
-  def railway_stations_routes_object(route)
-    self.railway_stations_routes.where(route_id: route).first
+  def station_route(route)
+    if @station_route.try(:route)!=route
+      @station_route = railway_stations_routes.where(route_id: route).first
+    end
+    @station_route
   end
 
 end

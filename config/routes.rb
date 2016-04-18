@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
-  resources :trains
-  resources :railway_stations
+  resources :trains do
+    resources :wagons, shallow: true
+  end
+  resources :railway_stations do
+    patch :update_parameters, :on => :member
+  end
   resources :routes do
     get 'stations' => 'routes#add_stations', :on => :member
     patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
     delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
   end
-  resources :wagons
-  resources :tickets
+  #resources :wagons
+  #resources :tickets
+  resource :search
+  resources :users do
+    resources :tickets, :except => [:edit, :update]
+  end
 
   get 'welcome' => 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
