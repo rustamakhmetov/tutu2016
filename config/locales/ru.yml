@@ -1,3 +1,31 @@
 ru:
   common:
     errors: 'При заполнении формы возникли ошибки'
+    action:
+      create: 'Создать'
+      show: 'Показать'
+      edit: 'Изменить'
+      delete: 'Удалить'
+      confirm: 'Вы уверены?'
+      back: 'Назад'
+
+  admin:
+    railway_stations:
+      index:
+        field_title: 'Наименование'
+        command_new: 'Новая станция'
+        title: 'Список станций'
+      new:
+        title: 'Новая станция'
+      edit:
+        title: 'Изменить станцию'
+      show:
+        field_title: 'Наименование'
+      form:
+        submit: '%{action} станцию'
+      create:
+        notice: 'Станция успешно создана'
+      update:
+        notice: 'Станция успешно обновлена'
+      destroy:
+        notice: 'Станция успешно удалена'

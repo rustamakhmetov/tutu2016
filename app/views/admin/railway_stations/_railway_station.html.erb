@@ -1,6 +1,6 @@
 <tr>
   <td><%= railway_station.title %></td>
-  <td><%= link_to 'Показать', [:admin, railway_station] %></td>
-  <td><%= link_to 'Изменить', edit_admin_railway_station_path(railway_station) %></td>
-  <td><%= link_to 'Удалить', [:admin, railway_station], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td><%= link_to t('common.action.show'), [:admin, railway_station] %></td>
+  <td><%= link_to t('common.action.edit'), edit_admin_railway_station_path(railway_station) %></td>
+  <td><%= link_to t('common.action.delete'), [:admin, railway_station], method: :delete, data: { confirm: t('common.action.confirm') } %></td>
 </tr>
