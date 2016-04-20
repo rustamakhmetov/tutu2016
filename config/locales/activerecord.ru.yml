@@ -7,6 +7,7 @@ ru:
       route: 'Маршрут'
       user: 'Пользователь'
       wagon: 'Вагон'
+      railway_stations_route: 'Станции в маршруте'
     attributes:
       railway_station:
         title: 'Название'
@@ -34,6 +35,12 @@ ru:
         side_bottom_places: 'Боковых нижних мест'
         side_top_places: 'Боковых верхних мест'
         sedentary_places: 'Сидячих мест'
+      railway_stations_route:
+        railway_station: 'Станция'
+        route: 'Маршрут'
+        position: 'Позиция'
+        arrival_time: 'Время прибытия'
+        departure_time: 'Время отправления'
 
     errors:
       messages:

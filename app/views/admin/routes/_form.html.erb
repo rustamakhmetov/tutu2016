@@ -14,6 +14,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "#{@route.new_record? ? 'Создать' : 'Изменить'}" %>
+    <%= f.submit t('.submit', action: @route.new_record? ? t('common.action.create') : t('common.action.edit')) %>
   </div>
 <% end %>

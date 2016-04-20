@@ -10,11 +10,7 @@ Rails.application.routes.draw do
     resources :railway_stations do
       patch :update_parameters, :on => :member
     end
-    resources :routes do
-      get 'stations' => 'routes#add_stations', :on => :member
-      patch 'stations'  => 'routes#update_stations', :on => :member, as: :update_stations
-      delete 'station/:station_id'  => 'routes#delete_station', :on => :member, as: :delete_station
-    end
+    resources :routes
     resources :users
     resources :tickets, :except => [:new, :create]
   end
@@ -22,8 +18,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :tickets, :except => [:edit, :update]
   end
-  #resources :wagons
-  #resources :tickets
+
   resource  :search
   resources :cabinet, only: :index
 

@@ -8,6 +8,7 @@ ru:
       delete: 'Удалить'
       confirm: 'Вы уверены?'
       back: 'Назад'
+    empty_list: 'Список пуст'
 
   admin:
     railway_stations:
@@ -29,3 +30,24 @@ ru:
         notice: 'Станция успешно обновлена'
       destroy:
         notice: 'Станция успешно удалена'
+    routes:
+      form:
+        submit: '%{action} маршрут'
+      add_stations:
+        title: 'Добавление станций в маршрут'
+        submit: 'Добавить станции'
+      edit:
+        title: 'Редактирование маршрута'
+      index:
+        title: 'Список маршрутов'
+      new:
+        title: 'Новый маршрут'
+      show:
+        trains_title: 'Поезда на маршруте'
+        stations_title: 'Станции в маршруте'
+      create:
+        notice: 'Маршрут успешно создан.'
+      update:
+        notice: 'Маршрут успешно обновлен.'
+      destroy:
+        notice: 'Маршрут успешно удален.'

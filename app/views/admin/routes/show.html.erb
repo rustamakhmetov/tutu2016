@@ -1,15 +1,15 @@
 <p>
-  <strong>Наименование:</strong>
+  <strong><%= t('activerecord.attributes.route.name') %>:</strong>
   <%= @route.name %>
 </p>
 
 <p>
-  <strong>Поезда на маршруте</strong>
+  <strong><%= t('.trains_title') %></strong>
 </p>
 
 <p>
   <% if @route.trains.empty? %>
-      Список пуст
+      <%= t('common.empty_list') %>
   <% else %>
     <ul>
       <% @route.trains.each do |train| %>
@@ -20,19 +20,19 @@
 </p>
 
 <p>
-  <strong>Станции в маршруте</strong>
+  <strong><%= t('.stations_title') %></strong>
 </p>
 
 <p>
   <% if @route.stations.empty? %>
-      Список пуст
+      <%= t('common.empty_list') %>
   <% else %>
     <table>
       <thead>
-        <th>Наименование</th>
-        <th>Позиция</th>
-        <th>Время прибытия</th>
-        <th>Время отправления</th>
+        <th><%= t('activerecord.attributes.railway_stations_route.railway_station') %></th>
+        <th><%= t('activerecord.attributes.railway_stations_route.position') %></th>
+        <th><%= t('activerecord.attributes.railway_stations_route.arrival_time') %></th>
+        <th><%= t('activerecord.attributes.railway_stations_route.departure_time') %></th>
       <th></th>
       </thead>
       <tbody>
@@ -44,7 +44,7 @@
                     <td><%= number_field_tag :position, railway_station.position(@route) %></td>
                     <td><%= time_field_tag :arrival_time, railway_station.arrival_time(@route) %></td>
                     <td><%= time_field_tag :departure_time, railway_station.departure_time(@route) %></td>
-                    <td><%= submit_tag 'Изменить' %></td>
+                    <td><%= submit_tag t('common.action.edit') %></td>
                 <% end %>
             </tr>
           <% end %>
@@ -53,5 +53,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Изменить', edit_admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
+<%= link_to t('common.action.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.action.back'), admin_routes_path %>
