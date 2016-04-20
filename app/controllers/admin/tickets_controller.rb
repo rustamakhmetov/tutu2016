@@ -1,6 +1,5 @@
 class Admin::TicketsController < Admin::BaseController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  #before_action :set_user
   before_action :set_train, :set_stations, only: [:update]
 
   # GET /tickets
@@ -12,31 +11,15 @@ class Admin::TicketsController < Admin::BaseController
   def show
   end
 
-  # GET /tickets/new
-  # def new
-  #   @ticket = Ticket.new
-  # end
-
   # GET /tickets/1/edit
   def edit
+    @stations = RailwayStation.all
   end
-
-  # POST /tickets
-  # def create
-  #   @ticket = Ticket.new(ticket_params)
-  #   @ticket.user = @user
-  #
-  #   if @ticket.save
-  #     redirect_to admin_tickets_path(@user, @ticket), notice: 'Билет успешно создан.'
-  #   else
-  #     render :new
-  #   end
-  # end
 
   # PATCH/PUT /tickets/1
   def update
     if @ticket.update(ticket_params)
-      redirect_to [:admin, @ticket], notice: 'Билет успешно обновлен.'
+      redirect_to [:admin, @ticket], notice: t('.notice')
     else
       render :edit
     end
@@ -45,13 +28,12 @@ class Admin::TicketsController < Admin::BaseController
   # DELETE /tickets/1
   def destroy
     @ticket.destroy
-    redirect_to admin_tickets_path(@ticket), notice: 'Билет успешно удален.'
+    redirect_to admin_tickets_path(@ticket), notice: t('.notice')
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    #@user = params.try(:user_id) ? User.find(params.try(:user_id)) : User.first
     @user = User.find(params[:user_id])
   end
 

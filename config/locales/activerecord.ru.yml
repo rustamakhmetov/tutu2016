@@ -16,7 +16,7 @@ ru:
         route: 'Текущий маршрут'
         sorting_wagons: 'Сортировка вагонов'
       ticket:
-        train: 'Текущий поезд'
+        train: 'Поезд'
         fio: 'ФИО'
         passport: 'Паспорт'
         start_station: 'Начальная станция'

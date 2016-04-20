@@ -2,6 +2,7 @@ ru:
   common:
     errors: 'При заполнении формы возникли ошибки'
     action:
+      buy: 'Купить'
       create: 'Создать'
       show: 'Показать'
       edit: 'Изменить'
@@ -51,3 +52,14 @@ ru:
         notice: 'Маршрут успешно обновлен.'
       destroy:
         notice: 'Маршрут успешно удален.'
+    tickets:
+      form:
+        submit: '%{action} билет'
+      edit:
+        title: 'Редактирование билета'
+      index:
+        title: 'Список билетов'
+      update:
+        notice: 'Билет успешно обновлен.'
+      destroy:
+        notice: 'Билет успешно удален.'

@@ -8,12 +8,12 @@
 
   <div class="field">
     <%= f.label :start_station %>
-    <%= f.select :start_station_id, options_from_collection_for_select( RailwayStation.all, "id", "title", @ticket.start_station.try(:id) ) %>
+    <%= f.select :start_station_id, options_from_collection_for_select( @stations, "id", "title", @ticket.start_station.try(:id) ) %>
   </div>
 
   <div class="field">
     <%= f.label :end_station %>
-    <%= f.select :end_station_id, options_from_collection_for_select( RailwayStation.all, "id", "title", @ticket.end_station.try(:id) ) %>
+    <%= f.select :end_station_id, options_from_collection_for_select( @stations, "id", "title", @ticket.end_station.try(:id) ) %>
   </div>
 
   <div class="field">
@@ -27,6 +27,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "#{@ticket.new_record? ? 'Купить' : 'Изменить'}" %>
+    <%= f.submit t('.submit', action: @ticket.new_record? ? t('common.action.buy') : t('common.action.edit')) %>
   </div>
 <% end %>

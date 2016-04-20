@@ -4,7 +4,7 @@
   <td><%= ticket.end_station.title %></td>
   <td><%= ticket.fio %></td>
   <td><%= ticket.passport %></td>
-  <td><%= link_to 'Показать', admin_ticket_path(ticket) %></td>
-  <td><%= link_to 'Редактировать', edit_admin_ticket_path(ticket) %></td>
-  <td><%= link_to 'Удалить', admin_ticket_path(ticket), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td><%= link_to t('common.action.show'), admin_ticket_path(ticket) %></td>
+  <td><%= link_to t('common.action.edit'), edit_admin_ticket_path(ticket) %></td>
+  <td><%= link_to t('common.action.delete'), admin_ticket_path(ticket), method: :delete, data: { confirm: t('common.action.confirm') } %></td>
 </tr>
