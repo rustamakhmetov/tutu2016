@@ -2,12 +2,12 @@
   <%= render 'common/errors', resource: @train %>
 
     <div class="field">
-        <%= f.label :number, 'Номер' %><br>
+        <%= f.label :number %><br>
         <%= f.text_field :number %>
     </div>
 
     <div class="field">
-        <%= f.label :route, "Текущий маршрут" %>
+        <%= f.label :route %>
         <%= f.collection_select :route_id, Route.all, :id, :name %>
     </div>
 

@@ -2,13 +2,21 @@
   <strong>Поиск билетов</strong>
 </p>
 
-<p>
+<div class="row">
   <%= form_tag search_path, method: :get do %>
-      <%= select_tag :departure_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @departure_station.try(:id)) %>
-      <%= select_tag :arrival_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @arrival_station.try(:id)) %>
-      <%= submit_tag 'Искать' %>
+      <div class="col-md-4">
+        <%= select_tag :departure_station, options_from_collection_for_select( @stations, "id", "title", @departure_station.try(:id)), class: 'form-control' %>
+      </div>
+      <div class="col-md-4">
+        <%= select_tag :arrival_station, options_from_collection_for_select( @stations, "id", "title", @arrival_station.try(:id)), class: 'form-control' %>
+      </div>
+      <div class="col-md-4">
+        <%= submit_tag 'Искать', class: 'btn btn-primary' %>
+      </div>
   <% end %>
+</div>
 
+<p>
   <% if @arrival_station && @departure_station %>
     <table class="table">
       <thead>
