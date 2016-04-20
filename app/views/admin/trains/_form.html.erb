@@ -2,17 +2,17 @@
   <%= render 'common/errors', resource: @train %>
 
     <div class="field">
-        <%= f.label :number, 'Номер' %><br>
+        <%= f.label :number %><br>
         <%= f.text_field :number %>
     </div>
 
     <div class="field">
-        <%= f.label :route, "Текущий маршрут" %>
+        <%= f.label :route %>
         <%= f.collection_select :route_id, Route.all, :id, :name %>
     </div>
 
     <div class="field">
-        <%= f.label :sorting_wagons, "Сортировка вагонов" %>
+        <%= f.label :sorting_wagons %>
         <%= f.select :sorting_wagons, [['с головы поезда', false], ['с хвоста поезда', true]] %>
     </div>
 

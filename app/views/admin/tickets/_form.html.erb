@@ -2,27 +2,27 @@
   <%= render 'common/errors', resource: @ticket %>
 
   <div class="field">
-    <%= f.label :train, "Текущий поезд" %>
+    <%= f.label :train %>
     <%= f.select :train_id, options_from_collection_for_select( Train.all, "id", "number", @ticket.train.try(:id) ) %>
   </div>
 
   <div class="field">
-    <%= f.label :start_station, 'Начальная станция' %>
+    <%= f.label :start_station %>
     <%= f.select :start_station_id, options_from_collection_for_select( RailwayStation.all, "id", "title", @ticket.start_station.try(:id) ) %>
   </div>
 
   <div class="field">
-    <%= f.label :end_station, 'Конечная станция' %>
+    <%= f.label :end_station %>
     <%= f.select :end_station_id, options_from_collection_for_select( RailwayStation.all, "id", "title", @ticket.end_station.try(:id) ) %>
   </div>
 
   <div class="field">
-    <%= f.label :fio, 'ФИО' %>
+    <%= f.label :fio %>
     <%= f.text_field :fio %>
   </div>
 
   <div class="field">
-    <%= f.label :passport, 'Паспорт' %>
+    <%= f.label :passport %>
     <%= f.text_field :passport %>
   </div>
 
