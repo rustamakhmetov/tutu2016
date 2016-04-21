@@ -1,21 +1,34 @@
-<h1>Список билетов</h1>
+<% content_for :title do %><%= t('.title') %>
+<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h2><%= t('.title') %></h2>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Поезд</th>
-      <th>Начальная станция</th>
-      <th>Конечная станция</th>
-      <th>ФИО</th>
-      <th>Паспорт</th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t('activerecord.attributes.ticket.train') %></th>
+        <th><%= t('activerecord.attributes.ticket.start_station') %></th>
+        <th><%= t('activerecord.attributes.ticket.end_station') %></th>
+        <th><%= t('activerecord.attributes.ticket.fio') %></th>
+        <th><%= t('activerecord.attributes.ticket.passport') %></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+          <%= render @tickets %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-  <tbody>
-    <%= render @tickets %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Назад', cabinet_index_path %>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to t('cabinet.index.search_tickets'), search_path, class: "btn btn-primary btn-sm", style: "color: white;" %>
+    <%= link_to t('common.action.back'), cabinet_index_path, class: "btn btn-primary btn-sm", style: "color: white;" %>
+  </div>
+</div>

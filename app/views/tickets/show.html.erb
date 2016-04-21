@@ -1,26 +1,26 @@
 <p>
-  <strong>Текущий поезд:</strong>
+  <strong><%= t('activerecord.attributes.ticket.train') %>:</strong>
   <%= @ticket.train.number %>
 </p>
 
 <p>
-  <strong>Начальная станция:</strong>
+  <strong><%= t('activerecord.attributes.ticket.start_station') %>:</strong>
   <%= @ticket.start_station.title %>
 </p>
 
 <p>
-  <strong>Конечная станция:</strong>
+  <strong><%= t('activerecord.attributes.ticket.end_station') %>:</strong>
   <%= @ticket.end_station.title %>
 </p>
 
 <p>
-  <strong>ФИО:</strong>
+  <strong><%= t('activerecord.attributes.ticket.fio') %>:</strong>
   <%= @ticket.fio %>
 </p>
 
 <p>
-  <strong>Паспорт:</strong>
+  <strong><%= t('activerecord.attributes.ticket.passport') %>:</strong>
   <%= @ticket.passport %>
 </p>
 
-<%= link_to 'Назад', user_tickets_path %>
+<%= link_to t('common.action.back'), user_tickets_path, class: "btn btn-primary btn-sm", style: "color: white;" %>

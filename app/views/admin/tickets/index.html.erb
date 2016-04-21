@@ -1,21 +1,28 @@
-<h1><%= t('.title') %></h1>
+<% content_for :title do %><%= t('.title') %><% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h2><%= t('.title') %></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t('activerecord.attributes.ticket.train') %></th>
+        <th><%= t('activerecord.attributes.ticket.start_station') %></th>
+        <th><%= t('activerecord.attributes.ticket.end_station') %></th>
+        <th><%= t('activerecord.attributes.ticket.fio') %></th>
+        <th><%= t('activerecord.attributes.ticket.passport') %></th>
+      </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= t('activerecord.attributes.ticket.train') %></th>
-      <th><%= t('activerecord.attributes.ticket.start_station') %></th>
-      <th><%= t('activerecord.attributes.ticket.end_station') %></th>
-      <th><%= t('activerecord.attributes.ticket.fio') %></th>
-      <th><%= t('activerecord.attributes.ticket.passport') %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%= render @tickets %>
-  </tbody>
-</table>
-
+      <tbody>
+      <%= render @tickets %>
+      </tbody>
+    </table>
+  </div>
+</div>
 <br>
 
 <%= link_to t('common.action.back'), admin_root_path %>

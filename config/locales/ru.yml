@@ -9,7 +9,12 @@ ru:
       delete: 'Удалить'
       confirm: 'Вы уверены?'
       back: 'Назад'
+
     empty_list: 'Список пуст'
+    sign_in: 'Войти'
+    sign_out: 'Выйти'
+    user_cabinet: 'Кабинет'
+    admin_cabinet: 'Админка'
 
   admin:
     railway_stations:
@@ -59,6 +64,36 @@ ru:
         title: 'Редактирование билета'
       index:
         title: 'Список билетов'
+      update:
+        notice: 'Билет успешно обновлен.'
+      destroy:
+        notice: 'Билет успешно удален.'
+    admin:
+      index:
+        list:
+          tickets: 'Список билетов'
+          stations: 'Список станций'
+          trains: 'Список поездов'
+          routes: 'Список маршрутов'
+          users: 'Список пользователей'
+
+  searches:
+    show:
+      submit: 'Искать'
+      title: 'Поиск билетов'
+  cabinet:
+    index:
+      search_tickets: 'Поиск билетов'
+      purchased_tickets: 'Мои билеты'
+  tickets:
+      form:
+        submit: '%{action} билет'
+      edit:
+        title: 'Редактирование билета'
+      index:
+        title: 'Список билетов'
+      new:
+        title: 'Новый билет'
       update:
         notice: 'Билет успешно обновлен.'
       destroy:

@@ -4,6 +4,8 @@
   <td><%= ticket.end_station.title %></td>
   <td><%= ticket.fio %></td>
   <td><%= ticket.passport %></td>
-  <td><%= link_to 'Показать', user_ticket_path(@user, ticket) %></td>
-  <td><%= link_to 'Удалить', user_ticket_path(@user, ticket), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td>
+    <%= link_to t('common.action.show'), user_ticket_path(@user, ticket), class: "btn btn-primary btn-xs", style: "color: white;" %>
+    <%= link_to t('common.action.delete'), user_ticket_path(@user, ticket), method: :delete, data: { confirm: t('common.action.confirm') }, class: "btn btn-primary btn-xs", style: "color: white;" %>
+  </td>
 </tr>

@@ -1,50 +1,64 @@
-<p>
-  <strong>Поиск билетов</strong>
-</p>
+<% content_for :title do %><%= t('.title') %><% end %>
 
-<p>
+<div class="row">
+  <div class="col-md-12">
+    <h2><%= t('.title') %></h2>
+  </div>
+</div>
+
+<div class="row">
   <%= form_tag search_path, method: :get do %>
-      <%= select_tag :departure_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @departure_station.try(:id)) %>
-      <%= select_tag :arrival_station, options_from_collection_for_select( RailwayStation.all, "id", "title", @arrival_station.try(:id)) %>
-      <%= submit_tag 'Искать' %>
+      <div class="col-md-4">
+        <%= select_tag :departure_station, options_from_collection_for_select(@stations, "id", "title", @departure_station.try(:id)), class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= select_tag :arrival_station, options_from_collection_for_select(@stations, "id", "title", @arrival_station.try(:id)), class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= submit_tag t('.submit'), class: "btn btn-primary" %>
+      </div>
   <% end %>
+</div>
 
+<div class="row">
   <% if @arrival_station && @departure_station %>
-    <table class="table">
-      <thead>
-        <th width="100px">Поезд</th>
-        <th width="200px">Маршрут</th>
-        <th width="100px">Время отправления</th>
-        <th width="100px">Время прибытия</th>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <th width="100px"><%= t('activerecord.attributes.ticket.train') %></th>
+        <th width="200px"><%= t('activerecord.attributes.railway_stations_route.route') %></th>
+        <th width="100px"><%= t('activerecord.attributes.railway_stations_route.departure_time') %></th>
+        <th width="100px"><%= t('activerecord.attributes.railway_stations_route.arrival_time') %></th>
         <th></th>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <% @routes.each do |route| %>
             <% route.trains.each do |train| %>
                 <tr>
-                    <td>
-                      <%= train.number %>
-                    </td>
-                    <td>
-                      <%= route.name %>
-                    </td>
-                    <td>
-                        <%= @departure_station.departure_time(route).to_s(:time) %>
-                    </td>
-                    <td>
-                        <%= @arrival_station.arrival_time(route).to_s(:time) %>
-                    </td>
-                    <td>
-                      <% if user_signed_in? %>
-                        <%= link_to "Купить", new_user_ticket_path(current_user, ticket: {start_station_id: @departure_station.id, end_station_id: @arrival_station.id, train_id: train.id}) %>
-                      <% end %>
-                    </td>
+                  <td>
+                    <%= train.number %>
+                  </td>
+                  <td>
+                    <%= route.name %>
+                  </td>
+                  <td>
+                    <%= @departure_station.departure_time(route).to_s(:time) %>
+                  </td>
+                  <td>
+                    <%= @arrival_station.arrival_time(route).to_s(:time) %>
+                  </td>
+                  <td>
+                    <% if user_signed_in? %>
+                        <%= link_to t('common.action.buy'),
+                            new_user_ticket_path(current_user, ticket: {start_station_id: @departure_station.id, end_station_id: @arrival_station.id, train_id: train.id}),
+                            class: "btn btn-info", style: "color: white;" %>
+                    <% end %>
+                  </td>
                 </tr>
             <% end %>
         <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   <% end %>
-</p>
-
-<%= link_to 'На главную', root_path %>
+</div>
