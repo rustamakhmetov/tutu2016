@@ -7,6 +7,7 @@ class Ticket < ActiveRecord::Base
   validates :train, :start_station, :end_station, :fio, :passport, presence: true
 
   after_create :send_notification
+  after_destroy :send_notification_cancel
 
   def route_name
     "#{start_station.title} - #{end_station.title}"
@@ -16,5 +17,9 @@ class Ticket < ActiveRecord::Base
 
   def send_notification
     TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+
+  def send_notification_cancel
+    TicketsMailer.cancel_ticket(self.user, self).deliver_now
   end
 end
