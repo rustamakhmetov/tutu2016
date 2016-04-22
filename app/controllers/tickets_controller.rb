@@ -28,7 +28,7 @@ class TicketsController < ApplicationController
     @ticket.user = @user
 
     if @ticket.save
-      redirect_to user_tickets_path(@user, @ticket), notice: 'Билет успешно создан.'
+      redirect_to user_tickets_path(@user, @ticket), notice: 'Билет успешно куплен.'
     else
       render :new
     end
