@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
+<%= best_in_place [:admin, @route], :name, style: "border-bottom: 1px dashed #84ae84;" %>
+
 <%= link_to t('common.action.show'), [:admin, @route] %> |
 <%= link_to t('common.action.back'), admin_routes_path %>

@@ -1,5 +1,5 @@
 <tr>
-  <td><%= route.name %></td>
+  <td><%= best_in_place [:admin, route], :name, style: "border-bottom: 1px dashed #84ae84;" %></td>
   <td><%= link_to t('common.action.show'), [:admin, route] %></td>
   <td><%= link_to t('common.action.edit'), edit_admin_route_path(route) %></td>
   <td><%= link_to t('common.action.delete'), [:admin, route], method: :delete, data: { confirm: t('common.action.confirm') } %></td>
