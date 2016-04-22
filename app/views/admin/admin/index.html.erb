@@ -1,8 +1,16 @@
-<h1>Админка</h1>
-<ol>
-  <li><%= link_to 'Список билетов', admin_tickets_path %></li>
-  <li><%= link_to 'Список станций', admin_railway_stations_path %></li>
-  <li><%= link_to 'Список поездов', admin_trains_path %></li>
-  <li><%= link_to 'Список маршрутов', admin_routes_path %></li>
-  <li><%= link_to 'Список пользователей', admin_users_path %></li>
-</ol>
+<% content_for :title do %><%= t('common.admin_cabinet') %><% end %>
+
+<div class="row">
+  <div class="col-md-12">
+        <h2><%= t('common.admin_cabinet') %></h2>
+  </div>
+  <div class="col-md-12">
+    <ol>
+      <li><%= link_to t('.list.tickets'), admin_tickets_path %></li>
+      <li><%= link_to t('.list.stations'), admin_railway_stations_path %></li>
+      <li><%= link_to t('.list.trains'), admin_trains_path %></li>
+      <li><%= link_to t('.list.trains'), admin_routes_path %></li>
+      <li><%= link_to t('.list.users'), admin_users_path %></li>
+    </ol>
+  </div>
+</div>

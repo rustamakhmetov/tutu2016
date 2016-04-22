@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Список маршрутов</h1>
+<h1><%= t('.title') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Наименование</th>
+      <th><%= t('activerecord.attributes.route.name') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,5 +15,5 @@
 
 <br>
 
-<%= link_to 'Новый маршрут', new_admin_route_path %>
-<%= link_to 'Назад', admin_root_path %>
+<%= link_to t('common.action.create'), new_admin_route_path %>
+<%= link_to t('common.action.back'), admin_root_path %>

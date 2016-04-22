@@ -2,18 +2,18 @@
   <%= render 'common/errors', resource: @route %>
 
   <div class="field">
-    <%= f.label :name, 'Наименование' %><br>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :station_ids, 'Выберите станции:' %><br>
+    <%= f.label :station_ids %>:<br>
     <%=
       f.collection_select :station_ids, RailwayStation.all, :id, :title, {}, {:multiple => true}
     %>
   </div>
 
   <div class="actions">
-    <%= f.submit "#{@route.new_record? ? 'Создать' : 'Изменить'}" %>
+    <%= f.submit t('.submit', action: @route.new_record? ? t('common.action.create') : t('common.action.edit')) %>
   </div>
 <% end %>

@@ -1,5 +1,13 @@
-<h1>Личный кабинет</h1>
-<ol>
-  <li><%= link_to 'Поиск билетов', search_path %></li>
-  <li><%= link_to 'Мои билеты', user_tickets_path(current_user) %></li>
-</ol>
+<% content_for :title do %><%= t('common.user_cabinet') %><% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2><%= t('common.user_cabinet') %></h2>
+  </div>
+  <div class="col-md-12">
+    <ol>
+      <li><%= link_to t('.search_tickets'), search_path %></li>
+      <li><%= link_to t('.purchased_tickets'), user_tickets_path(current_user) %></li>    </ol>
+  </div>
+</div>
+

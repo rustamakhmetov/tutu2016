@@ -1,0 +1,100 @@
+ru:
+  common:
+    errors: 'При заполнении формы возникли ошибки'
+    action:
+      buy: 'Купить'
+      create: 'Создать'
+      show: 'Показать'
+      edit: 'Изменить'
+      delete: 'Удалить'
+      confirm: 'Вы уверены?'
+      back: 'Назад'
+
+    empty_list: 'Список пуст'
+    sign_in: 'Войти'
+    sign_out: 'Выйти'
+    user_cabinet: 'Кабинет'
+    admin_cabinet: 'Админка'
+
+  admin:
+    railway_stations:
+      index:
+        field_title: 'Наименование'
+        command_new: 'Новая станция'
+        title: 'Список станций'
+      new:
+        title: 'Новая станция'
+      edit:
+        title: 'Изменить станцию'
+      show:
+        field_title: 'Наименование'
+      form:
+        submit: '%{action} станцию'
+      create:
+        notice: 'Станция успешно создана'
+      update:
+        notice: 'Станция успешно обновлена'
+      destroy:
+        notice: 'Станция успешно удалена'
+    routes:
+      form:
+        submit: '%{action} маршрут'
+      add_stations:
+        title: 'Добавление станций в маршрут'
+        submit: 'Добавить станции'
+      edit:
+        title: 'Редактирование маршрута'
+      index:
+        title: 'Список маршрутов'
+      new:
+        title: 'Новый маршрут'
+      show:
+        trains_title: 'Поезда на маршруте'
+        stations_title: 'Станции в маршруте'
+      create:
+        notice: 'Маршрут успешно создан.'
+      update:
+        notice: 'Маршрут успешно обновлен.'
+      destroy:
+        notice: 'Маршрут успешно удален.'
+    tickets:
+      form:
+        submit: '%{action} билет'
+      edit:
+        title: 'Редактирование билета'
+      index:
+        title: 'Список билетов'
+      update:
+        notice: 'Билет успешно обновлен.'
+      destroy:
+        notice: 'Билет успешно удален.'
+    admin:
+      index:
+        list:
+          tickets: 'Список билетов'
+          stations: 'Список станций'
+          trains: 'Список поездов'
+          routes: 'Список маршрутов'
+          users: 'Список пользователей'
+
+  searches:
+    show:
+      submit: 'Искать'
+      title: 'Поиск билетов'
+  cabinet:
+    index:
+      search_tickets: 'Поиск билетов'
+      purchased_tickets: 'Мои билеты'
+  tickets:
+      form:
+        submit: '%{action} билет'
+      edit:
+        title: 'Редактирование билета'
+      index:
+        title: 'Список билетов'
+      new:
+        title: 'Новый билет'
+      update:
+        notice: 'Билет успешно обновлен.'
+      destroy:
+        notice: 'Билет успешно удален.'

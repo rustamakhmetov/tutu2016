@@ -1,5 +1,4 @@
-<h1>Новый билет</h1>
+<% content_for :title do %><%= t('.title') %><% end %>
+<h2><%= t('.title') %></h2>
 
 <%= render 'form' %>
-
-<%= link_to 'Назад', url_for(:back) %>
