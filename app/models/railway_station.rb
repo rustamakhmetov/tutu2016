@@ -7,8 +7,8 @@ class RailwayStation < ActiveRecord::Base
 
   validates :title, presence: true
 
-  scope :ordered, -> {joins(:railway_stations_routes).order('railway_stations_routes.position').uniq}
-  scope :ordered2, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
+  #scope :ordered, -> {joins(:railway_stations_routes).order('railway_stations_routes.position').uniq}
+  scope :ordered, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
   scope :ordered3, -> {order('railway_stations_routes.position')}
 
   def position(route)
