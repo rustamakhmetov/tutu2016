@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  <%= form_tag search_path, method: :get do %>
+  <%= form_tag search_path, method: :get, class: 'search_form' do %>
       <div class="col-md-4">
         <%= select_tag :departure_station, options_from_collection_for_select(@stations, "id", "title", @departure_station.try(:id)), class: "form-control" %>
       </div>
@@ -15,7 +15,7 @@
         <%= select_tag :arrival_station, options_from_collection_for_select(@stations, "id", "title", @arrival_station.try(:id)), class: "form-control" %>
       </div>
       <div class="col-md-4">
-        <%= submit_tag t('.submit'), class: "btn btn-primary" %>
+        <%= submit_tag t('.submit'), class: "btn btn-primary find" %>
       </div>
   <% end %>
 </div>
