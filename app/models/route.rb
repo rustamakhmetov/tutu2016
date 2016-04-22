@@ -19,7 +19,7 @@ class Route < ActiveRecord::Base
   def set_name
     if self.stations.empty?
       self.name = "Без станций"
-    else
+    elsif self.stations.nil?
       self.name = "#{self.stations.first.title} - #{self.stations.last.title}"
     end
   end
