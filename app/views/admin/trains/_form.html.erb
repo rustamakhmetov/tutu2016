@@ -1,22 +1,25 @@
-<%= form_for([:admin, @train]) do |f| %>
-  <%= render 'common/errors', resource: @train %>
+<%= form_for([:admin, train], html: {style: "display: #{hidden ? 'none' : 'block'};"}) do |f| %>
+  <%= render 'common/errors', resource: train %>
 
     <div class="field">
         <%= f.label :number %><br>
         <%= f.text_field :number %>
     </div>
 
-    <div class="field">
+    <div class="field" style="<%= small ? 'display: none' : '' %>">
         <%= f.label :route %>
         <%= f.collection_select :route_id, Route.all, :id, :name %>
     </div>
 
-    <div class="field">
+    <div class="field" style="<%= small ? 'display: none' : '' %>">
         <%= f.label :sorting_wagons %>
         <%= f.select :sorting_wagons, [['с головы поезда', false], ['с хвоста поезда', true]] %>
     </div>
 
     <div class="actions">
-        <%= f.submit "#{@train.new_record? ? 'Создать' : 'Изменить'}" %>
+        <%= f.submit "#{train.new_record? ? 'Создать' : 'Изменить'}" %>
+        <% if small %>
+            <%= f.button "Отменить", class: "btn_train_cancel", data: { train_id: train.id }, type: 'button' %>
+        <% end %>
     </div>
 <% end %>

@@ -68,6 +68,9 @@ ru:
         notice: 'Билет успешно обновлен.'
       destroy:
         notice: 'Билет успешно удален.'
+    trains:
+      index:
+        title: 'Список поездов'
     admin:
       index:
         list:

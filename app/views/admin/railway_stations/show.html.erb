@@ -1,7 +1,13 @@
-<p>
-  <strong><%= t('.field_title') %>:</strong>
-  <%= @railway_station.title %>
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <strong><%= t('.field_title') %>:</strong>
+    <%= @railway_station.title %>
+  </div>
+</div>
 
-<%= link_to t('common.action.edit'), edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to t('common.action.back'), admin_railway_stations_path %>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to t('common.action.edit'), edit_admin_railway_station_path(@railway_station), class: "btn btn-primary btn-sm", style: 'color:white' %>
+    <%= link_to t('common.action.back'), admin_railway_stations_path, class: "btn btn-primary btn-sm", style: 'color:white' %>
+  </div>
+</div>

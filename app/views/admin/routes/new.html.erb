@@ -1,5 +1,5 @@
-<h1><%= t('.title') %></h1>
+<h2><%= t('.title') %></h2>
 
-<%= render 'form' %>
+<%= render 'form', route: @route, hidden: false, small: false %>
 
 <%= link_to t('common.action.back'), admin_routes_path %>
