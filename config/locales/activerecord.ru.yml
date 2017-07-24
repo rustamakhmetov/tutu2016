@@ -45,3 +45,10 @@ ru:
     errors:
       messages:
         blank: 'не может быть пустым'
+      models:
+        user:
+          attributes:
+            password:
+              too_short: 'слишкой короткий'
+            password_confirmation:
+              confirmation: 'обязательно для заполнения'
